@@ -15,6 +15,11 @@ const getMember = (id: string) => {
 	return user
 }
 
+const deleteMember = (id: string) => {
+	const index = users.findIndex((user) => user.id === id);
+	if (index !== -1) return users.splice(index, 1)[0];
+}
+
 const getMembers = (room: any) => users.filter(user => user.room === room)
 
-module.exports = { addMember, getMember, getMembers }
+module.exports = { addMember, getMember, getMembers, deleteMember }

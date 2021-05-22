@@ -1,4 +1,4 @@
-const { addMember, getMember, getMembers } = require('./members')
+const { addMember, getMember, deleteMember, getMembers } = require('./members')
 
 const app = require('express')()
 const http = require('http').createServer(app)
@@ -21,6 +21,15 @@ io.on('connection', (socket: any) => {
 	socket.on('sendMessage', (message: string) => {
 		const user = getMember(socket.id)
 		io.in(user.room).emit('message', { user: user.name, text: message });
+	})
+	socket.on("disconnect", () => {
+		console.log("User disconnected");
+		const user = deleteMember(socket.id)
+		if (user) {
+			io.in(user.room).emit('notification', { title: 'Кто то вышел', description: `${user.name} только что вышел из комнаты` })
+
+			io.in(user.room).emit('users', getMembers(user.room))
+		}
 	})
 })
 
