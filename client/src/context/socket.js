@@ -1,16 +1,16 @@
-import io from "socket.io-client";
 import React from 'react'
-const SOCKET_URL = 'http://localhost:5000/'
+import io from 'socket.io-client'
 
-export const socket = io.connect(SOCKET_URL);
-export const SocketContext = React.createContext();
+const SocketContext = React.createContext()
 
-const SocketApp = ({ children }) => {
+const SocketProvider = ({ children }) => {
+	const ENDPOINT = 'http://localhost:5000/';
+	const socket = io(ENDPOINT, { transports: ['websocket'] })
 	return (
 		<SocketContext.Provider value={socket}>
 			{children}
 		</SocketContext.Provider>
-	);
-};
+	)
+}
 
-export { SocketApp }
+export { SocketContext, SocketProvider }

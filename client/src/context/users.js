@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 const UsersContext = React.createContext()
 
 const UsersProvider = ({ children }) => {

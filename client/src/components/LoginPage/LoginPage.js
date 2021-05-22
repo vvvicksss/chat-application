@@ -2,14 +2,14 @@ import { SocketContext } from '../../context/socket';
 import { UsersContext } from '../../context/users';
 import { MainContext } from '../../context/main';
 import { useHistory } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import React from 'react'
 
 
 const LoginPage = () => {
 	const socket = useContext(SocketContext)
-	const history = useHistory()
 	const { name, setName, room, setRoom } = useContext(MainContext)
+	const history = useHistory()
 	const { setUsers } = useContext(UsersContext)
 
 
@@ -26,16 +26,16 @@ const LoginPage = () => {
 			}
 			history.push('/chat')
 		})
-		console.log(1)
-		return (
-			<div>
-				<input placeholder="Имя Пользователя" />
-				<input placeholder="Имя комнаты" />
-				<button onClick={handleClick}>Send</button>
-			</div>
-		)
-
 	}
+	return (
+		<div>
+			<input placeholder="Имя Пользователя" value={name} onChange={e => setName(e.target.value)} />
+			<input placeholder="Имя комнаты" value={room} onChange={e => setRoom(e.target.value)} />
+			<button onClick={handleClick}>Send</button>
+		</div>
+	)
 
 }
+
+
 export default LoginPage;
