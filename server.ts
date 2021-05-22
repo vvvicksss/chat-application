@@ -6,10 +6,18 @@ const io = require('socket.io')(http)
 const cors = require('cors')
 const PORT = process.env.PORT || 5000
 
+interface Date {
+	name: string,
+	room: string
+}
+
+declare type MyHandler = (myArgument: string) => void;
 
 app.use(cors())
 io.on('connection', (socket: any) => {
-	socket.on('login', (name: string, room: string, callback: any) => {
+	console.log("User connected");
+	socket.on('login', ({ name, room }: Date, callback: Function) => {
+		console.log("User " + name);
 		const { user, error } = addMember(socket.id, name, room)
 		if (error) return callback(error)
 		socket.join(user.room)
