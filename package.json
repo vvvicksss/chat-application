@@ -20,9 +20,9 @@
     "ts-node": "^9.1.1"
   },
   "scripts": {
-    "test": "test",
-    "start": "nodemon server.ts",
-    "build": "tsc --project ./"
+    "start": "node build/server.js",
+    "build": "tsc",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
