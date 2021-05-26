@@ -13,11 +13,6 @@ interface Date {
 
 app.use(cors())
 
-// socket - NtykyA45Uc50wqhCAAAL
-// name - имя пользователя 
-// room - имя комнаты
-
-//npm run test 
 
 io.on('connection', (socket: any) => {
 
@@ -56,7 +51,7 @@ io.on('connection', (socket: any) => {
 })
 
 app.get('/', (req: any, res: any) => {
-	res.send("Сервер работает!" + req)
+	res.send("Сервер работает!")
 })
 
 http.listen(PORT, () => {
