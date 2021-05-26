@@ -1,8 +1,10 @@
 import { SocketContext } from '../../context/socket';
 import { UsersContext } from '../../context/users';
 import { MainContext } from '../../context/main';
+import { Button, Drawer, TextField } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
+import './LoginPage.scss'
 import React from 'react'
 
 
@@ -27,11 +29,15 @@ const LoginPage = () => {
 			history.push('/chat')
 		})
 	}
+
 	return (
-		<div>
-			<input placeholder="Имя Пользователя" value={name} onChange={e => setName(e.target.value)} />
-			<input placeholder="Имя комнаты" value={room} onChange={e => setRoom(e.target.value)} />
-			<button onClick={handleClick}>Send</button>
+		<div className="containerLogin">
+			<div className="loginForm">
+				<h1>Welcome to the ChatApp!</h1>
+				<TextField placeholder="Имя Пользователя" value={name} onChange={e => setName(e.target.value)} />
+				<TextField placeholder="Имя комнаты" value={room} onChange={e => setRoom(e.target.value)} />
+				<Button variant="contained" color="primary" onClick={handleClick}>Send</Button>
+			</div>
 		</div>
 	)
 

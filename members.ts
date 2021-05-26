@@ -2,6 +2,7 @@ import { cpuUsage } from "process"
 
 const users: any[] = []
 
+
 const addMember = (id: string, name: string, room: any) => {
 
 	const existingUser: string = users.find(user => user.name === name)

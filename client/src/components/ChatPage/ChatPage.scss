@@ -1,0 +1,92 @@
+body {
+	background-color: #212121;
+}
+.form{
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 0;
+	width: 86%;
+	height: 100px;
+	background-color: #333333!important;
+	z-index: 222200!important;
+	margin-left: 200px;
+	border-left: 0.5px solid #212121;
+}
+.MuiInputBase-input{
+	height: 80px!important;
+	color: #ffffff!important;
+}
+.messages {
+	padding-top: 50px;
+	width: 100%;
+	height: 100vh;
+	overflow-y: auto;
+	margin-bottom: 100px;
+}
+.msg {
+	width: fit-content;
+	word-wrap: break-word;
+	max-width:60%;
+	padding: 20px;
+	background-color: #ffffff;
+	border-radius: 20px;
+	right: 0;
+	margin-left: 20px;
+	font-size: 25px;
+	margin-left: 220px;
+}
+.my-message {
+	display: flex;
+    flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+	margin-right: 20px;
+	.msg {
+		background-color: #9CC8F5;
+	}
+}
+p {
+	margin-top: 5px;
+}
+p.user {
+	color: #ffffff;
+	margin-bottom: 0;
+	font-size: 20px;
+	margin-right: 15px;
+	margin-left: 230px;
+}
+.header {
+	background-color: #333333;
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-bottom: 20px;
+	z-index: 222200!important;
+	border-bottom: 0.5px solid #212121;
+}
+.logout-btn {
+	margin-right: 20px!important;
+}
+
+.no-msg {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+	p{
+		width: fit-content;
+		padding: 20px;
+		border-radius: 20px;
+		font-size: 30px;
+		background-color: #ffffff;
+	}
+}
+
+// .makeStyles-drawerPaper-12 {
+// 	background-color: #101010!important;
+// 	color: #4350AF!important;
+// }
