@@ -38,6 +38,9 @@ const ChatPage = () => {
 		socket.on("notification", notif => {
 			alert(notif?.description)
 		})
+		socket.on("private", elem => {
+			alert('Private Message\r\nFrom: ' + elem.user + "\r\n" + "Message: " + elem.text)
+		})
 	}, [socket])
 
 
@@ -46,6 +49,11 @@ const ChatPage = () => {
 		setMessage('')
 	}
 
+	const privateMess = (e) => {
+		console.log(e.target.id);
+		let mess = prompt('Write a message');
+		socket.emit('privateMessage', mess, e.target.id)
+	}
 	const logout = () => {
 		setName(''); setRoom('');
 		history.push('/')
@@ -106,8 +114,8 @@ const ChatPage = () => {
 				<List>
 					{users && users.map(user => {
 						return (
-							<ListItem button key={user.id}>
-								<ListItemText primary={user.name} />
+							<ListItem onClick={privateMess} button key={user.id} id={user.id} >
+								<ListItemText id={user.id} primary={user.name} />
 							</ListItem>
 						)
 					})}

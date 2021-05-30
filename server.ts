@@ -31,6 +31,11 @@ io.on('connection', (socket: any) => {
 		callback()
 	})
 
+	socket.on('privateMessage', (message: string, receiver: string) => {
+		const user = getMember(socket.id)
+		io.to(receiver).emit('private', { user: user.name, text: message });
+	})
+
 	socket.on('sendMessage', (message: string) => {
 
 		const user = getMember(socket.id)
